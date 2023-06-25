@@ -1,0 +1,13 @@
+<Project>
+  <PropertyGroup>
+    <MicrosoftPackageVersion>7.0.0</MicrosoftPackageVersion>
+    <PackageId>$(AssemblyName)</PackageId>
+    <Authors>Gotrays App</Authors>
+    <Copyright>© Gotrays App. All rights reserved.</Copyright>
+    <RepositoryUrl>https://github.com/239573049/Gotrays.App</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <RepositoryRoot>$(MSBuildThisFileDirectory)</RepositoryRoot>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+  </PropertyGroup>
+</Project>
