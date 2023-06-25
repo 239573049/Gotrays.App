@@ -1,0 +1,31 @@
+﻿@page "/role"
+
+@inject ChatProductService ChatProductService
+@inject StorageService StorageService
+
+<MItemGroup ActiveClass="error white--text">
+    <MContainer Style="height: 70%;overflow:auto;">
+        <MRow Style="margin-bottom:200px;">
+            @foreach (var n in aIRoleSettingDtos)
+            {
+                <MCol @key="n"
+                      Cols="4"
+                      Md="4">
+                    <MItem>
+                        <MCard Class="@($"d-flex align-center {(n.Id == Setting.RoleId?" error white--text":"")}")"
+                               Height="200"
+                               OnClick=" async ()=>{
+                                await context.Toggle.Invoke();
+                                await SetRole(n);
+                               }"
+                               RefBack="context.Ref">
+                            <div class=" flex-grow-1 text-center">
+                                @n.Title
+                            </div>
+                        </MCard>
+                    </MItem>
+                </MCol>
+            }
+        </MRow>
+    </MContainer>
+</MItemGroup>

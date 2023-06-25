@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>GotraysApp</title>
+    <base href="/" />
+    <link href="_content/Masa.Blazor/css/masa-blazor.min.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="https://cdn.masastack.com/npm/@mdi/font@7.1.96/css/materialdesignicons.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="GotraysApp.styles.css" rel="stylesheet" />
+    <style>
+
+        /* 隐藏默认滚动条 */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* 自定义滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        /* 滚动条轨道 */
+        ::-webkit-scrollbar-track {
+            background-color: #f5f5f5;
+        }
+
+        /* 滚动条滑块 */
+        ::-webkit-scrollbar-thumb {
+            background-color: #ccc;
+            border-radius: 5px;
+        }
+
+            /* 滚动条滑块悬停状态 */
+            ::-webkit-scrollbar-thumb:hover {
+                background-color: #999;
+            }
+
+        /* 滚动条角落 */
+        ::-webkit-scrollbar-corner {
+            background-color: #f5f5f5;
+        }
+
+        html, body {
+            overflow: hidden !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="status-bar-safe-area"></div>
+
+    <div id="app">加载中</div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <script src="_framework/blazor.webview.js" autostart="false"></script>
+    <script src="_content/BlazorComponent/js/blazor-component.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+﻿.markdown-parser__basic img {
+    max-width: 100%;
+}
+
+.markdown-parser__basic blockquote {
+    border-left: 4px lightgray solid;
+    padding-left: 16px;
+}
+

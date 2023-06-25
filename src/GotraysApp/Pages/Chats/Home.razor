@@ -1,0 +1,48 @@
+﻿@page "/"
+@inject NavigationManager NavigationManager
+
+<MToolbar Color="cyan"
+          Height="@("55px")"
+          MaxHeight="@("55px")"
+          Dark>
+    <MToolbarTitle>AI列表</MToolbarTitle>
+</MToolbar>
+
+<MList ThreeLine>
+
+    <MListItem OnClick="()=>OnGo(Enums.ChatType.ChatGPT3_5)">
+        <MListItemAvatar>
+            <MImage Src="https://blog-simple.oss-cn-shenzhen.aliyuncs.com/ai.png"></MImage>
+        </MListItemAvatar>
+
+        <MListItemContent>
+            <MListItemTitle>普通智能AI</MListItemTitle>
+            <MListItemSubtitle>普通智能AI助手，基于ChatGPT3.5模型实现的智能助手！</MListItemSubtitle>
+        </MListItemContent>
+    </MListItem>
+    <MDivider Inset="true"></MDivider>
+
+    <MListItem OnClick="()=>OnGo(Enums.ChatType.ChatGPT3_5_16K)">
+        <MListItemAvatar>
+            <MImage Src="https://blog-simple.oss-cn-shenzhen.aliyuncs.com/ai.png"></MImage>
+        </MListItemAvatar>
+
+        <MListItemContent>
+            <MListItemTitle>高级智能AI</MListItemTitle>
+            <MListItemSubtitle>高级智能AI助手，基于ChatGPT3.5-16K模型实现的智能助手！</MListItemSubtitle>
+        </MListItemContent>
+    </MListItem>
+    <MDivider Inset="true"></MDivider>
+
+    <MListItem OnClick="()=>OnGo(Enums.ChatType.SD)">
+        <MListItemAvatar>
+            <MImage Src="https://blog-simple.oss-cn-shenzhen.aliyuncs.com/ai.png"></MImage>
+        </MListItemAvatar>
+
+        <MListItemContent>
+            <MListItemTitle>智能图形AI</MListItemTitle>
+            <MListItemSubtitle>智能图形AI助手，根据关键词生成图片！</MListItemSubtitle>
+        </MListItemContent>
+    </MListItem>
+    <MDivider Inset="true"></MDivider>
+</MList>

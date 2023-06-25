@@ -1,0 +1,22 @@
+﻿<MFooter App
+          Color="transparent"
+          Height="72"
+         Inset>
+    <MTextField
+                HideDetails="@("true")"
+                Value="Value"
+                ValueChanged="ValueChanged"
+                Solo></MTextField>
+
+     <MTooltip Top>
+        <ActivatorContent>
+            <MButton OnClick="OnClick" Style="margin-left:8px;" @attributes="@context.Attrs" Text>
+                <MIcon>mdi-send-circle-outline</MIcon>
+             </MButton>
+         </ActivatorContent>
+         <ChildContent>
+             发送
+         </ChildContent>
+     </MTooltip>
+
+ </MFooter>

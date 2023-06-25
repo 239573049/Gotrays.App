@@ -1,0 +1,26 @@
+﻿@layout EmptyLayout
+@page "/login"
+
+@inject IPopupService PopupService
+@inject NavigationManager NavigationManager
+@inject UserService UserService
+
+<div class="container">
+    <h1>Token AI🤖</h1>
+    <form>
+        <MTextField @bind-Value=PayloadDto.Account Label="用户名"
+                            Outlined
+                            Dense>
+        </MTextField>
+        <MTextField @bind-Value=PayloadDto.Password Label="密码"
+                            Outlined
+                     Type="password"
+                            Dense>
+        </MTextField>
+        <MButton Rounded Block OnClick="OnLogin">登录</MButton>
+    </form>
+    <div class="links">
+        <a href="#">注册</a>
+        <a href="#">忘记密码</a>
+    </div>
+</div>
