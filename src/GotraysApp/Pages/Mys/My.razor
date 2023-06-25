@@ -74,18 +74,4 @@
         </MList>
     </MNavigationDrawer>
 </MCard>
-@code {
-    private StringNumber _selectedItem = 0;
-    private Item[] _items = new Item[]
-    {
-       new Item { Text= "检查更新", Icon= "mdi-update" },
-       new Item { Text= "设置", Icon= "mdi-cog-outline" }
-
-    };
-
-    class Item
-    {
-        public string Text { get; set; }
-        public string Icon { get; set; }
-    }
-}
+<UpdateModal @bind-Value=UpdateDisplay AppInfo=AppInfo />

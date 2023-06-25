@@ -8,7 +8,7 @@ public class Constant
     /// <summary>
     /// app版本
     /// </summary>
-    public const string Versions = "0.0.0.1";
+    public const string Versions = "0.0.0.0";
 
     /// <summary>
     /// App唯一ID

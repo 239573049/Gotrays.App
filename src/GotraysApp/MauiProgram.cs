@@ -1,4 +1,5 @@
 ﻿using GotraysApp.Extensions;
+using GotraysApp.Services;
 using Microsoft.Extensions.Logging;
 
 namespace GotraysApp;
@@ -28,6 +29,10 @@ public static class MauiProgram
              .UseAutoSyncStructure(true) //自动同步实体结构到数据库
              .Build();
         });
+
+#if ANDROID
+        builder.Services.AddSingleton<IUpgradeService, UpgradeService>();
+#endif
 
 #if DEBUG
         builder.Services.AddBlazorWebViewDeveloperTools();

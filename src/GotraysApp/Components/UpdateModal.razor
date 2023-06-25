@@ -1,0 +1,43 @@
+﻿@inject IUpgradeService UpgradeService
+@inject IPopupService PopupService
+
+<PModal Value="Value"
+        ValueChanged="OnValueChanged"
+        Persistent
+         Title="Title"
+         Width="500"
+         OnSave="OnSave"
+         OnCancel="OnCancel">
+     <ChildContent>
+
+         @if (!IsUpdate)
+        {
+            <MCardTitle>@AppInfo.Name</MCardTitle>
+            <MCardText>
+                @AppInfo.Message
+            </MCardText>
+        }
+        else
+        {
+            <MCardTitle >
+                正在更新请稍后...
+            </MCardTitle>
+            <MCardText>
+                @BytesReceived KB/@TotalBytesToReceive KB
+                <MProgressLinear Value="@Ps" Striped Height="15" Color="light-blue">
+                     <strong>@Ps %</strong>
+                 </MProgressLinear>
+             </MCardText>
+        }
+     </ChildContent>
+     <CancelContent Context="cancel">
+         <MButton Icon OnClick="cancel.Click" Disabled="cancel.Loading">
+             关闭
+         </MButton>
+     </CancelContent>
+     <SaveContent Context="save">
+         <MButton Icon Color="primary" OnClick="save.Click" Disabled="save.Loading" Loading="IsUpdate">
+             更新
+         </MButton>
+     </SaveContent>
+ </PModal>

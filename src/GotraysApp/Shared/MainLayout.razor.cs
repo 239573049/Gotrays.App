@@ -26,5 +26,9 @@ public partial class MainLayout
             NavigationManager.NavigateTo("/login", true);
         }
 
+        _ = Task.Run(async () =>
+        {
+            await FreeSql.Select<ChatMessageDto>().CountAsync();
+        });
     }
 }
