@@ -41,7 +41,12 @@ public partial class My
         }
     }
 
-    private async Task OnExit()
+    private void OnSetting()
+    {
+        NavigationManager.NavigateTo("/setting");
+    }
+
+    private  void OnExit()
     {
         SecureStorage.Default.Remove("token");
         NavigationManager.NavigateTo("/login");

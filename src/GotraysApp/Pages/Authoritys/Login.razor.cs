@@ -5,6 +5,18 @@ public partial class Login
 {
     private LoginPayloadDto PayloadDto = new();
 
+    private bool IsDisabled
+    {
+        get
+        {
+            if (PayloadDto.Account == null || PayloadDto.Password == null)
+            {
+                return true;
+            }
+            return PayloadDto.Account.Length < 5 || PayloadDto.Password.Length < 5;
+        }
+    }
+
     public async Task OnLogin()
     {
         try

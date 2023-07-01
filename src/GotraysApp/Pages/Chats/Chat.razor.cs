@@ -173,7 +173,6 @@ public partial class Chat
             catch (Exception)
             {
 
-                throw;
             }
         }
 

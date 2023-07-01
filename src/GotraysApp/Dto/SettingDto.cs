@@ -10,7 +10,7 @@ public class SettingDto
     /// <summary>
     /// 温度
     /// </summary>
-    public int temperature { get; set; } = 0;
+    public double temperature { get; set; } = 0;
 
     /// <summary>
     /// 最大上文

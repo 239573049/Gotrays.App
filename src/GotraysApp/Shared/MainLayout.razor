@@ -4,35 +4,29 @@
 
 <CascadingValue Value="Setting" Name="@nameof(SettingDto)">
 
-    <MApp>
-        @Body
+    <MApp Class="slide-in-left">
+        <div class="@Class" @ontouchstart="TouchStart" @ontouchend="TouchEnd" @onmousedown="Mousedown" @onmouseup="Mouseup" style="height: 100%">
+            @Body
+        </div>
+
         <MFooter App Style="padding:0;">
-             <MBottomNavigation @bind-Value="value"
-                                BackgroundColor="@color"
-                                      Dark
-                                      Shift>
-                <MButton Href="/">
-                    <span>Chat</span>
-                    <MIcon>mdi-chat-processing-outline</MIcon>
-                </MButton>
-
-                <MButton Href="/role">
-                    <span>角色列表</span>
-
-                    <MIcon>mdi-party-popper</MIcon>
-                </MButton>
-
-                <MButton Href="/tools">
-                    <span>工具</span>
-
-                    <MIcon>mdi-tools</MIcon>
-                </MButton>
-
-                <MButton Href="/my">
-                    <span>我的</span>
-                    <MIcon>mdi-account-circle-outline</MIcon>
-                </MButton>
-            </MBottomNavigation>
+            <MTabs Centered
+                   BackgroundColor="indigo"
+                   ShowArrows="false"
+                   Style="@("background-color:"+Color+" !important")"
+                   Value="selectModel.Key"
+                   Dark>
+                @foreach (var i in AppBars)
+                {
+                    <MTab Value="i.Key" OnClick="()=>GoHref(i)">
+                        @if (!string.IsNullOrEmpty(i.Icon))
+                        {
+                            <MIcon Dark>@i.Icon</MIcon>
+                        }
+                        @i.Name
+                    </MTab>
+                }
+            </MTabs>
         </MFooter>
     </MApp>
 </CascadingValue>

@@ -13,7 +13,6 @@
     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
@@ -21,11 +20,20 @@ h1 {
     color: #333;
 }
 
+.form-group {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
 input[type="text"],
 input[type="password"] {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
 }
@@ -50,6 +58,6 @@ a {
     text-align: center;
 }
 
-    .links a {
-        margin-right: 10px;
-    }
+.links a {
+    margin-right: 10px;
+}

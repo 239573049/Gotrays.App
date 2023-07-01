@@ -32,6 +32,8 @@ public static class MauiProgram
 
 #if ANDROID
         builder.Services.AddSingleton<IUpgradeService, UpgradeService>();
+#elif WINDOWS
+        builder.Services.AddSingleton<IUpgradeService, UpgradeService>();
 #endif
 
 #if DEBUG

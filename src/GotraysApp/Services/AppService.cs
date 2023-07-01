@@ -8,7 +8,7 @@ public class AppService : CallerBase
 
     public async Task<AppInfoDto> GetAsync()
     {
-        return await GetAsync<AppInfoDto>("v1/Apps/" + Constant.Id);
+        return await GetAsync<AppInfoDto>("v1/Apps?os=" + Constant.OS);
     }
 
 }
