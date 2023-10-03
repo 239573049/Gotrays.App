@@ -4,74 +4,69 @@
 @inject NavigationManager NavigationManager
 @inject AppService AppService
 @inject IPopupService PopupService
+@layout EmptyLayout
 
-<MCard Width="@("100%")"
-       Height="@("100%")">
-    <MNavigationDrawer Width="@("100%")" permanent>
-        <MList>
-            <MListItem>
-                <MListItemAvatar>
-                    <MImage Src="@userDto.Avatar"></MImage>
-                </MListItemAvatar>
-            </MListItem>
+<MAppBar App Style="background-color: transparent">
+    <MButton Class="ma-2" Href="/" Text>
+        <MIcon Dark
+               Left>
+            mdi-arrow-left
+        </MIcon>返回
+    </MButton>
+</MAppBar>
+<MMain Style="background-color: transparent">
+    <MList Style="background-color: transparent">
+        <MListItem>
+            <MListItemAvatar>
+                <MImage Src="@userDto.Avatar"></MImage>
+            </MListItemAvatar>
+        </MListItem>
 
-            <MListItem Link>
+        <MListItem Link>
+            <MListItemContent>
+                <MListItemTitle class="text-h6">
+                    账号： @userDto.Account
+                </MListItemTitle>
+                <MListItemSubtitle>昵称：@userDto.UserName</MListItemSubtitle>
+                <div>
+                    @if (dayDosage != null)
+                    {
+                        @("token：" + dayDosage.Free)
+                    }
+                </div>
+            </MListItemContent>
+
+            <MListItemAction>
+                <MIcon>mdi-menu-down</MIcon>
+            </MListItemAction>
+        </MListItem>
+    </MList>
+    <MDivider></MDivider>
+    <MList Nav Style="background-color: transparent"
+           Dense>
+        <MListItemGroup >
+
+            <MListItem OnClick="UpdateAsync">
+                <MListItemIcon>
+                    <MIcon>mdi-update</MIcon>
+                </MListItemIcon>
+
                 <MListItemContent>
-                    <MListItemTitle class="text-h6">
-                        账号： @userDto.Account
-                    </MListItemTitle>
-                    <MListItemSubtitle>昵称：@userDto.UserName</MListItemSubtitle>
-                    <div>
-                        @if (dayDosage != null)
-                        {
-                            @("剩余次数：" + (dayDosage.Free + dayDosage.Money))
-                        }
-                    </div>
+                    <MListItemTitle>检查更新</MListItemTitle>
                 </MListItemContent>
-
-                <MListItemAction>
-                    <MIcon>mdi-menu-down</MIcon>
-                </MListItemAction>
             </MListItem>
-        </MList>
-        <MDivider></MDivider>
-        <MList Nav
-               Dense>
-            <MListItemGroup 
-                            Color="primary">
 
-                <MListItem OnClick="UpdateAsync">
-                    <MListItemIcon>
-                        <MIcon>mdi-update</MIcon>
-                    </MListItemIcon>
+            <MListItem OnClick="OnExit">
+                <MListItemIcon>
+                    <MIcon>mdi-cancel</MIcon>
+                </MListItemIcon>
 
-                    <MListItemContent>
-                        <MListItemTitle>检查更新</MListItemTitle>
-                    </MListItemContent>
-                </MListItem>
-                
-                <MListItem OnClick="OnSetting">
-                    <MListItemIcon>
-                        <MIcon>mdi-cog-outline</MIcon>
-                    </MListItemIcon>
+                <MListItemContent>
+                    <MListItemTitle>退出登录</MListItemTitle>
+                </MListItemContent>
+            </MListItem>
 
-                    <MListItemContent>
-                        <MListItemTitle>设置</MListItemTitle>
-                    </MListItemContent>
-                </MListItem>
-
-                <MListItem OnClick="OnExit">
-                    <MListItemIcon>
-                        <MIcon>mdi-cancel</MIcon>
-                    </MListItemIcon>
-
-                    <MListItemContent>
-                        <MListItemTitle>退出登录</MListItemTitle>
-                    </MListItemContent>
-                </MListItem>
-
-            </MListItemGroup>
-        </MList>
-    </MNavigationDrawer>
-</MCard>
+        </MListItemGroup>
+    </MList>
+</MMain>
 <UpdateModal @bind-Value=UpdateDisplay AppInfo=AppInfo />

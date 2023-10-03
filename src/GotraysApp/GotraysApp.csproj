@@ -31,16 +31,28 @@
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
         <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+        <AndroidSigningKeyStore>myapp.keystore</AndroidSigningKeyStore>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
       <AndroidEnableMultiDex>True</AndroidEnableMultiDex>
       <AndroidCreatePackagePerAbi>True</AndroidCreatePackagePerAbi>
+      <AndroidKeyStore>True</AndroidKeyStore>
+      <AndroidSigningStorePass>dd666666</AndroidSigningStorePass>
+      <AndroidSigningKeyPass>dd666666</AndroidSigningKeyPass>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
       <AndroidEnableMultiDex>True</AndroidEnableMultiDex>
       <AndroidCreatePackagePerAbi>True</AndroidCreatePackagePerAbi>
+      <AndroidKeyStore>True</AndroidKeyStore>
+      <AndroidSigningStorePass>dd666666</AndroidSigningStorePass>
+      <AndroidSigningKeyAlias></AndroidSigningKeyAlias>
+      <AndroidSigningKeyPass>dd666666</AndroidSigningKeyPass>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(RunConfiguration)'=='Default'">
+      <LaunchForBackgroundFetch>false</LaunchForBackgroundFetch>
     </PropertyGroup>
 
     <ItemGroup>
@@ -62,9 +74,9 @@
     </ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="FreeSql.DbContext" Version="3.2.697" />
-		<PackageReference Include="FreeSql.Provider.SqliteCore" Version="3.2.697" />
-		<PackageReference Include="Masa.Blazor" Version="1.0.0-rc.4" />
+		<PackageReference Include="FreeSql.DbContext" Version="3.2.801" />
+		<PackageReference Include="FreeSql.Provider.SqliteCore" Version="3.2.801" />
+		<PackageReference Include="Masa.Blazor" Version="1.0.4" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />

@@ -5,6 +5,8 @@ using Microsoft.Extensions.Logging;
 namespace GotraysApp;
 public static class MauiProgram
 {
+    public static MauiApp App;
+
     public static MauiApp CreateMauiApp()
     {
         var builder = MauiApp.CreateBuilder();
@@ -22,11 +24,18 @@ public static class MauiProgram
         builder.Services.AddScoped((services) =>
         {
 
+            var fileInfo = new FileInfo(Path.Combine(FileSystem.AppDataDirectory, "app.db"));
+
+            if (fileInfo.Directory?.Exists == false)
+            {
+                fileInfo.Directory.Create();
+            }
+            
             return new FreeSql.FreeSqlBuilder()
              .UseConnectionString(FreeSql.DataType.Sqlite, 
-             $"Data Source={Path.Combine(FileSystem.AppDataDirectory, "gotrays.db")};")
-                .UseLazyLoading(true)
-             .UseAutoSyncStructure(true) //自动同步实体结构到数据库
+             $"Data Source={fileInfo.FullName};")
+             .UseMonitorCommand(cmd => Console.WriteLine($"Sql：{cmd.CommandText}")) //监听SQL语句
+             .UseAutoSyncStructure(true) //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
              .Build();
         });
 
@@ -41,6 +50,8 @@ public static class MauiProgram
         builder.Logging.AddDebug();
 #endif
 
-        return builder.Build();
+        App = builder.Build();
+
+        return App;
     }
 }

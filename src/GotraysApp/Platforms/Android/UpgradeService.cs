@@ -48,21 +48,34 @@ public class UpgradeService : IUpgradeService
 
     public async Task DownloadFileAsync(string url, Action<long, long> action)
     {
-        var req = new HttpRequestMessage(new HttpMethod("GET"), url);
-        var response = _client.SendAsync(req, HttpCompletionOption.ResponseHeadersRead).Result;
-        var allLength = response.Content.Headers.ContentLength;
+        var response = await _client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead);
+
+        var totalBytes = response.Content.Headers.ContentLength.GetValueOrDefault();
+
         await using var stream = await response.Content.ReadAsStreamAsync();
+
         var file = $"{FileSystem.AppDataDirectory}/{"com.token.gotraysapp.apk"}";
-        await using var fileStream = new FileStream(file, FileMode.Create);
-        var buffer = new byte[1024 * 500];
-        var readLength = 0;
-        int length;
-        while ((length = await stream.ReadAsync(buffer)) != 0)
+        await using var fileStream = new FileStream(file, FileMode.Create,
+            FileAccess.Write, FileShare.None, 8192, true);
+
+        var totalReadBytes = 0L;
+        var buffer = new byte[8192];
+        var isMoreToRead = true;
+        do
         {
-            readLength += length;
-            action(readLength, allLength!.Value);
-            // 写入到文件
-            fileStream.Write(buffer, 0, length);
-        }
+            var read = await stream.ReadAsync(buffer, 0, buffer.Length);
+            if (read == 0)
+            {
+                isMoreToRead = false;
+            }
+            else
+            {
+                await fileStream.WriteAsync(buffer, 0, read);
+
+                totalReadBytes += read;
+                action.Invoke(totalReadBytes, totalBytes);
+            }
+        } while (isMoreToRead);
+
     }
 }

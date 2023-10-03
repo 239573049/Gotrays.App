@@ -117,140 +117,85 @@ a, .btn-link {
 }
 
 
-/*左边滑动出*/
-.slide-out-left {
-    -webkit-animation: slide-out-left 0.5s;
-    animation: slide-out-left 0.5s;
+.context-menu {
+    position: absolute;
+    width: 200px;
+    background-color: aliceblue;
+    border-radius: 8px;
+    padding: 8px;
 }
 
-/*右边滑动出*/
-.slide-out-right {
-    -webkit-animation: slide-out-right 0.5s;
-    animation: slide-out-right 0.5s;
+.channel-message {
+    width: 100%;
+    float: left;
 }
 
-/*右边滑动进*/
-.slide-in-right {
-    -webkit-animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
-
-/*左边滑动进*/
-.slide-in-left {
-    -webkit-animation: slide-in-left 0.5s;
-    animation: slide-in-left 0.5s;
-}
-
-@-webkit-keyframes slide-out-left {
-    0% {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-        opacity: 1;
-    }
-
-    100% {
-        -webkit-transform: translateX(-1000px);
-        transform: translateX(-1000px);
-        opacity: 0;
-    }
-}
-
-@keyframes slide-out-left {
-    0% {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-        opacity: 1;
-    }
-
-    100% {
-        -webkit-transform: translateX(-1000px);
-        transform: translateX(-1000px);
-        opacity: 0;
-    }
+.channel-content {
+    margin: 2px 8px 8px 8px;
+    background-color: #F1F1F1;
+    border-radius: 8px;
+    padding: 5px;
+    max-width: 75%;
+    min-height: 32px;
 }
 
 
-@-webkit-keyframes slide-out-right {
-    0% {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-        opacity: 1;
-    }
-
-    100% {
-        -webkit-transform: translateX(1000px);
-        transform: translateX(1000px);
-        opacity: 0;
-    }
+/* 设置滚动条的宽度 */
+::-webkit-scrollbar {
+    width: 10px; /* 滚动条宽度 */
 }
 
-@keyframes slide-out-right {
-    0% {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-        opacity: 1;
-    }
+/* 滚动条的轨道 */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* 轨道的颜色 */
+    border-radius: 10px; /* 轨道的圆角 */
+}
 
-    100% {
-        -webkit-transform: translateX(1000px);
-        transform: translateX(1000px);
-        opacity: 0;
-    }
+/* 滚动条的滑块 */
+::-webkit-scrollbar-thumb {
+    background: #888; /* 滑块的颜色 */
+    border-radius: 10px; /* 滑块的圆角 */
+}
+
+/* 滚动条的滑块：鼠标悬停时的样式 */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* 滑块的颜色 */
 }
 
 
-@-webkit-keyframes slide-in-left {
-    0% {
-        -webkit-transform: translateX(-1000px);
-        transform: translateX(-1000px);
-        opacity: 0;
-    }
-
-    100% {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-        opacity: 1;
-    }
+.markdown-parser__basic img {
+    max-width: 100%;
 }
 
-@keyframes slide-in-left {
-    0% {
-        -webkit-transform: translateX(-1000px);
-        transform: translateX(-1000px);
-        opacity: 0;
-    }
-
-    100% {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-        opacity: 1;
-    }
+.markdown-parser__basic blockquote {
+    border-left: 4px lightgray solid;
+    padding-left: 16px;
 }
 
-@-webkit-keyframes slide-in-right {
-    0% {
-        -webkit-transform: translateX(1000px);
-        transform: translateX(1000px);
-        opacity: 0;
-    }
-
-    100% {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-        opacity: 1;
-    }
+.pre .code {
+    overflow-x: auto;
+    max-width: 100%;
 }
 
-@keyframes slide-in-right {
-    0% {
-        -webkit-transform: translateX(1000px);
-        transform: translateX(1000px);
-        opacity: 0;
-    }
 
-    100% {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-        opacity: 1;
-    }
+.markdown-code {
+}
+
+.m-markdown-it p {
+    white-space: pre-wrap;
+}
+
+.role-item {
+    height: 80px;
+    margin: 15px;
+    border-radius: 8px;
+    background-image: linear-gradient(180deg, #6c90b3, #fdd9d9);
+}
+
+.select-role-item {
+    background-image: linear-gradient(181deg, #6a20d8, #7960d7, #7e91d5, #78c0d1)
+}
+
+.m-speed-dial--bottom {
+    bottom: 100px !important;
 }

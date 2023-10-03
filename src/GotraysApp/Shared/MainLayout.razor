@@ -1,32 +1,18 @@
 ﻿@inherits LayoutComponentBase
 @inject NavigationManager NavigationManager
-@inject IFreeSql FreeSql
 
 <CascadingValue Value="Setting" Name="@nameof(SettingDto)">
-
-    <MApp Class="slide-in-left">
-        <div class="@Class" @ontouchstart="TouchStart" @ontouchend="TouchEnd" @onmousedown="Mousedown" @onmouseup="Mouseup" style="height: 100%">
-            @Body
-        </div>
-
-        <MFooter App Style="padding:0;">
-            <MTabs Centered
-                   BackgroundColor="indigo"
-                   ShowArrows="false"
-                   Style="@("background-color:"+Color+" !important")"
-                   Value="selectModel.Key"
-                   Dark>
-                @foreach (var i in AppBars)
-                {
-                    <MTab Value="i.Key" OnClick="()=>GoHref(i)">
-                        @if (!string.IsNullOrEmpty(i.Icon))
-                        {
-                            <MIcon Dark>@i.Icon</MIcon>
-                        }
-                        @i.Name
-                    </MTab>
-                }
+    <MApp Style="background-image: linear-gradient(178deg, #827aef, #8db9e1, #b2cfe9, #b9cbdb, #bed0dc);" Class="slide-in-left">
+        <MAppBar Height="@("50px")" App Style="background-color:transparent;">
+            <MTabs BackgroundColor="transparent">
+                <MTab Href="/">对话</MTab>
+                <MTab Href="/role">助手</MTab>
+                <MSpacer></MSpacer>
+                <MButton Href="/my" Icon><MIcon>
+                        M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z
+                </MIcon></MButton>
             </MTabs>
-        </MFooter>
+        </MAppBar>
+        @Body
     </MApp>
 </CascadingValue>

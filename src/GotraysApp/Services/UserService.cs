@@ -2,6 +2,8 @@
 
 public class UserService : CallerBase
 {
+    private GetUserDto _userDto;
+
     public UserService(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
     {
     }
@@ -20,7 +22,12 @@ public class UserService : CallerBase
 
     public async Task<GetUserDto> GetGetUser()
     {
-        return await GetAsync<GetUserDto>("v1/Users");
+        if (_userDto != null)
+        {
+            return _userDto;
+        }
+
+        return _userDto = await GetAsync<GetUserDto>("v1/Users");
     }
 
 }

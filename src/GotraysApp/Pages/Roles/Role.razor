@@ -3,29 +3,35 @@
 @inject ChatProductService ChatProductService
 @inject StorageService StorageService
 
-<MItemGroup ActiveClass="error white--text">
-    <MContainer Style="height: 90vh;overflow:auto;">
-        <MRow Style="margin-bottom:200px;">
-            @foreach (var n in aIRoleSettingDtos)
+<MMain>
+    <MList Dense Style="max-height: calc(100vh - 50px);
+                        overflow: auto;">
+         <MListItemGroup @bind-Value="_selectedItem" Style="background-color: transparent;">
+             @foreach (var item in aIRoleSettingDtos)
             {
-                <MCol @key="n"
-                      Cols="4"
-                      Md="4">
-                    <MItem>
-                        <MCard Class="@($"d-flex align-center {(n.Id == Setting.RoleId?" error white--text":"")}")"
-                               Height="200"
-                               OnClick=" async ()=>{
-                                await context.Toggle.Invoke();
-                                await SetRole(n);
-                               }"
-                               RefBack="context.Ref">
-                            <div class=" flex-grow-1 text-center">
-                                @n.Title
-                            </div>
-                        </MCard>
-                    </MItem>
-                </MCol>
+                <MListItem OnClick="() => SetRole(item)" Class="@("role-item " + GetClass(item.Id))">
+                    @if (item.Id == Setting.RoleId)
+                    {
+                             <MListItemTitle>
+                                 <MBadge Content="@("选中")">
+                                    @item.Title
+                                 </MBadge>
+                             </MListItemTitle>
+                    }
+                    else
+                    {
+                        <MListItemTitle>
+                            @item.Title
+                        </MListItemTitle>
+                    }
+                    <span style="overflow: hidden;
+                                 height: 70px;
+                                 font-size: 12px;
+                                 text-overflow: ellipsis;">
+                        @item.Content
+                    </span>
+                </MListItem>
             }
-        </MRow>
-    </MContainer>
-</MItemGroup>
+        </MListItemGroup>
+    </MList>
+</MMain>

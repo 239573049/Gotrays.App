@@ -1,4 +1,4 @@
-﻿using GotraysApp.Helper;
+﻿using GotraysApp.Interops;
 using GotraysApp.Services;
 
 namespace GotraysApp.Extensions;
@@ -11,8 +11,9 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ChatProductService>();
         services.AddScoped<StorageService>();
         services.AddScoped<UserService>();
-        services.AddScoped<GotraysModule>();
-        services.AddScoped<ApiClientHelper>();
+        services.AddScoped<DocumentInterop>();
+        services.AddScoped<MainInterop>();
+        services.AddScoped<ChatService>();
         return services;
     }
 

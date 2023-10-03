@@ -4,7 +4,7 @@ namespace GotraysApp.Pages.Mys;
 
 public partial class My
 {
-    private GetUserDto userDto = new GetUserDto();
+    private GetUserDto userDto = new ();
 
     private DayDosageDto dayDosage = new();
 
@@ -39,11 +39,6 @@ public partial class My
                 Timeout = 3000,
             });
         }
-    }
-
-    private void OnSetting()
-    {
-        NavigationManager.NavigateTo("/setting");
     }
 
     private  void OnExit()
